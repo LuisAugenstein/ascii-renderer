@@ -15,31 +15,31 @@
 		<div>
 			<div class="flex justify-between">
 				<label for="width">Width: </label>
-				{$settings.width}
+				{$settings.displayWidth}
 			</div>
 			<input
 				id="width"
 				type="range"
 				class="w-full"
-				bind:value={$settings.width}
+				bind:value={$settings.displayWidth}
 				min="100"
-				max="1000"
-				step="0.01"
+				max="1200"
+				step="10"
 			/>
 		</div>
 		<div>
 			<div class="flex justify-between">
 				<label for="height">Height: </label>
-				{$settings.height}
+				{$settings.displayHeight}
 			</div>
 			<input
 				id="height"
 				type="range"
 				class="w-full"
-				bind:value={$settings.height}
+				bind:value={$settings.displayHeight}
 				min="100"
-				max="1000"
-				step="0.01"
+				max="600"
+				step="10"
 			/>
 		</div>
 	</div>
