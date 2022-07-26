@@ -1,11 +1,15 @@
 import { writable } from 'svelte/store';
 
 export interface Settings {
-    displayWidth: number;
-    displayHeight: number;
+    screenSize: number;
+    resolution: number;
+    characters: string;
+    characterSizeOffset: number;
 };
 
 export const settings = writable<Settings>({
-    displayWidth: 920,
-    displayHeight: 500
+    screenSize: 720,
+    resolution: 10,
+    characterSizeOffset: 0,
+    characters: '@#W$8?äöao;:=+~-,. '
 });
