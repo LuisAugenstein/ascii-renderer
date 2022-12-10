@@ -9,18 +9,20 @@
 
 <div>
 	<div class="flex justify-between">
-		<label for="{name}-input" data-tooltip-target="{name}-tooltip">{name} </label>
+		{#if tooltip}
+			<label for="{name}-input" data-tooltip-target="{name}-tooltip">{name} </label>
+			<div
+				id="{name}-tooltip"
+				role="tooltip"
+				class="absolute invisible p-2 text-white bg-gray-800 rounded-lg transition-opacity duration-300 tooltip"
+			>
+				{tooltip}
+				<div class="tooltip-arrow" data-popper-arrow />
+			</div>
+		{:else}
+			<label for="{name}-input">{name} </label>
+		{/if}
 		{value}
 	</div>
-	{#if tooltip}
-		<div
-			id="{name}-tooltip"
-			role="tooltip"
-			class="absolute invisible p-2 text-white bg-gray-800 rounded-lg transition-opacity duration-300 tooltip"
-		>
-			{tooltip}
-			<div class="tooltip-arrow" data-popper-arrow />
-		</div>
-	{/if}
 	<input id="{name}-input" type="range" class="w-full" bind:value {min} {max} {step} />
 </div>

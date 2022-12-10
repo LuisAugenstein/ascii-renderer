@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { settings } from '../stores/settings.store';
-	import { Icon } from '@steeze-ui/svelte-icon';
-	import { ArrowRight, ArrowLeft } from '@steeze-ui/heroicons';
+	// import { Icon } from '@steeze-ui/svelte-icon';
+	// import { ArrowRight, ArrowLeft } from '@steeze-ui/heroicons';
+	import ArrowRight from './icons/arrow-right.svelte';
+	import ArrowLeft from './icons/arrow-left.svelte';
 	import Slider from './slider.svelte';
 
 	let isSidebarVisible = true;
@@ -27,27 +29,23 @@
 			class="absolute right-64 top-0 mr-1 w-9 p-2 rounded bg-gray-50 hover:bg-gray-100"
 			on:click={() => (isSidebarVisible = !isSidebarVisible)}
 		>
-			<Icon src={isSidebarVisible ? ArrowRight : ArrowLeft} theme="solid" class="color-gray-900" />
+			{#if isSidebarVisible}
+				<ArrowRight />
+			{:else}
+				<ArrowLeft />
+			{/if}
+			<!-- <Icon src={isSidebarVisible ? ArrowRight : ArrowLeft} theme="solid" class="color-gray-900" /> -->
 		</button>
 		<Slider name="Screensize" bind:value={$settings.screenSize} min={100} max={1020} step={10} />
 		<Slider
 			name="Resolution"
 			bind:value={$settings.resolution}
-			min={5}
+			min={2}
 			max={30}
 			step={1}
 			tooltip="determines the number of characters in one row. screenSize / resolution =
 		n_characters_per_row"
 		/>
-		<Slider
-			name="Charactersize"
-			bind:value={$settings.characterSizeOffset}
-			min={-20}
-			max={20}
-			step={1}
-			tooltip="make the individual characters larger so that they overlap or experiment how it looks like when they are very small."
-		/>
-
 		<div>
 			<label for="characters" data-tooltip-target="characters-tooltip">Characters </label>
 			<div
